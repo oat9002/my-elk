@@ -35,7 +35,7 @@ services:
         command: filebeat -e -d filebeat.yml -d "publish"
         volumes:
             - ./filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
-            - ../logs:/usr/share/filebeat/logs
+            - /var/log/app-logging:/usr/share/filebeat/logs
         networks:
             - elk
         depends_on:
