@@ -2,12 +2,11 @@ filebeat.inputs:
     - type: log
       enabled: true
       paths:
-          - "/usr/share/filebeat/app-logging/*.log"
+          - "/usr/share/filebeat/logs/*.log"
       tail_files: true
+      multiline.pattern: "^[[:space:]]"
+      multiline.negate: false
+      multiline.match: after
 
 output.logstash:
     hosts: "logstash:5000"
-
-multiline.pattern: "^[[:space:]]"
-multiline.negate: false
-multiline.match: after
